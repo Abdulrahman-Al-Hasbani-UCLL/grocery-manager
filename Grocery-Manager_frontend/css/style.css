@@ -1,0 +1,93 @@
+/*
+48435C English Violet
+9893DA Tropical indigo
+BBBDF6 Periwinkle
+EDFFEC Honeydew
+*/
+body {
+  font-family: "Poppins", sans-serif;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+  background: rgb(5, 171, 233);
+  background: linear-gradient(180deg, #05abe9 0%, #05abe9 30%, #035080 50%, #011e30 70%);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: cover;
+}
+body a {
+  font-style: normal;
+  color: inherit;
+  text-decoration: none;
+  transition: font-style 1.5s ease, transform 1.5s ease, font-size 1.5s ease;
+}
+body a:hover {
+  font-style: italic;
+  transform: scale(1.5);
+  font-size: 1.2em;
+}
+body header {
+  display: flex;
+  flex-direction: row;
+  color: #faebd7;
+}
+body header ul {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: #8BC6EC;
+  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+  border-radius: 30px;
+  border-width: 3px;
+}
+body header ul li {
+  margin: auto;
+  color: black;
+}
+body footer {
+  color: #faebd7;
+  display: flex;
+  flex-direction: row;
+}
+body footer ul {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 30px;
+  border-width: 3px;
+}
+body footer ul li {
+  margin: auto;
+  color: #EDFFEC;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  color: #faebd7;
+  margin-top: 5rem;
+}
+main h2 {
+  align-self: center;
+}
+main div {
+  align-self: center;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+main input {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+  border-radius: 30px;
+}
+main td, main th {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+}/*# sourceMappingURL=style.css.map */

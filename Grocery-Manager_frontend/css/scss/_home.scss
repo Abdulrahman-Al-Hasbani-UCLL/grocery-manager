@@ -1,0 +1,16 @@
+@use "variable.scss" as *;
+    
+main {
+    display: flex;
+    flex-direction: column;
+    color: $antiquewhite;
+    margin-top: 5rem;
+    h2 {
+        align-self: center;
+    }
+    div {
+        align-self: center;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+}
