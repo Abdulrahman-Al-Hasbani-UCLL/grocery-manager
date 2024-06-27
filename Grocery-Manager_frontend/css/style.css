@@ -4,9 +4,16 @@
 BBBDF6 Periwinkle
 EDFFEC Honeydew
 */
-html, body {
+html,
+body {
   height: 100%;
-  overflow: hidden;
+}
+
+header section img, footer section img {
+  margin-top: 0.5rem;
+  width: 5vw;
+  height: auto;
+  border-radius: 50%;
 }
 
 body {
@@ -18,8 +25,7 @@ body {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   margin-bottom: 0.1rem;
-  background: rgb(5, 171, 233);
-  background: linear-gradient(180deg, #05abe9 0%, #05abe9 30%, #035080 50%, #011e30 70%);
+  background: linear-gradient(180deg, #2a2a2a 0%, #3b3b3b 33%, #4c4c4c 66%);
   background-repeat: no-repeat;
   background-size: 100%;
   background-size: cover;
@@ -27,21 +33,19 @@ body {
 body main {
   flex-grow: 1;
 }
-body a {
-  font-style: normal;
-  color: inherit;
-  text-decoration: none;
-  transition: font-style 1.5s ease, transform 1.5s ease, font-size 1.5s ease;
-}
-body a:hover {
-  font-style: italic;
-  transform: scale(1.5);
-  font-size: 1.2em;
-}
 body header {
   display: flex;
   flex-direction: row;
   color: #faebd7;
+  align-items: center;
+}
+body header section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body header section img {
+  border-radius: 90px;
 }
 body header ul {
   display: flex;
@@ -54,14 +58,37 @@ body header ul {
   border-radius: 30px;
   border-width: 3px;
 }
+body header ul a {
+  font-style: normal;
+  color: inherit;
+  text-decoration: none;
+  transition: font-style 1.5s ease, transform 1.5s ease, font-size 1.5s ease;
+}
+body header ul a:hover {
+  font-style: italic;
+  transform: scale(1.5);
+  font-size: 1.2em;
+}
 body header ul li {
   margin: auto;
   color: black;
+}
+body header .profileIcon {
+  margin-right: 1rem;
+  align-self: center;
+  scale: 0.7;
 }
 body footer {
   color: #faebd7;
   display: flex;
   flex-direction: row;
+}
+body footer section {
+  display: flex;
+  flex-direction: column;
+}
+body footer section img {
+  border-radius: 90px;
 }
 body footer ul {
   display: flex;
@@ -72,9 +99,25 @@ body footer ul {
   border-radius: 30px;
   border-width: 3px;
 }
+body footer ul a {
+  font-style: normal;
+  color: inherit;
+  text-decoration: none;
+  transition: font-style 1.5s ease, transform 1.5s ease, font-size 1.5s ease;
+}
+body footer ul a:hover {
+  font-style: italic;
+  transform: scale(1.5);
+  font-size: 1.2em;
+}
 body footer ul li {
   margin: auto;
   color: #EDFFEC;
+}
+body footer .logoutButton {
+  margin-left: 0.5rem;
+  align-self: center;
+  padding: 0.5rem;
 }
 
 @media (max-width: 800px) {
@@ -87,7 +130,8 @@ body footer ul li {
   }
 }
 @media (max-height: 800px) {
-  body, html {
+  body,
+  html {
     height: auto;
     min-height: 100vh;
   }
@@ -171,4 +215,61 @@ main .mainStatusText {
   border: #faebd7;
   border-radius: 30px;
   border-width: 3px;
+}
+
+#loginMain {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #ffffff 0%, #f0f0f0 33%, #cad1d5 66%);
+  color: #48435C;
+}
+#loginMain #LoginHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  margin-top: auto;
+}
+#loginMain #LoginHeader section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#loginMain #LoginHeader section img {
+  border-radius: 90px;
+  margin: auto;
+}
+#loginMain h1 {
+  color: #48435C;
+}
+#loginMain h2 {
+  color: #48435C;
+}
+#loginMain h3 {
+  align-self: center;
+  margin-top: 0.5rem;
+  color: #48435C;
+}
+#loginMain #loginForm {
+  flex-grow: 1;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+#loginMain #loginForm input {
+  align-self: center;
+  margin: 2rem;
+  padding: 1rem;
+}
+#loginMain #loginForm button {
+  align-self: center;
+  max-width: 5rem;
+  padding: 1rem;
+  border-radius: 90px;
+}
+#loginMain #LoginFooter {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
 }/*# sourceMappingURL=style.css.map */

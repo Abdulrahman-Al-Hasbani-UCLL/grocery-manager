@@ -1,0 +1,65 @@
+@use "variable.scss" as *;
+
+#loginMain {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #ffffff 0%, #f0f0f0 33%, #cad1d5 66%);
+    color: $EnglishViolet;
+
+    
+    #LoginHeader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+        margin-top: auto;
+    
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+    
+            img {
+                border-radius: 90px;
+                margin: auto;
+            }
+        }
+    }
+
+    h1 {
+        color: $EnglishViolet;
+    }
+    h2 {
+        color: $EnglishViolet;
+    }
+    h3 {
+        align-self: center;
+        margin-top: 0.5rem;
+        color: $EnglishViolet;
+    }
+
+    #loginForm {
+        flex-grow: 1;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        margin: 2rem;
+        input {
+            align-self: center;
+            margin: 2rem;
+            padding: 1rem;
+        }
+        button {
+            align-self: center;
+            max-width: 5rem;
+            padding: 1rem;
+            border-radius: 90px;
+        }
+    }
+
+    #LoginFooter {
+        display: flex;
+        flex-direction: row;
+        align-self: center;
+    }
+}

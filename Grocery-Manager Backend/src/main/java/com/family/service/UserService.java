@@ -16,13 +16,21 @@ public class UserService {
         this.userRepository = userRepository;
     }
     
-    public boolean existingUserByName(String name) {
+    private boolean existingUserByName(String name) {
         if (getUserByName(name) != null) {
             return true; 
         }
         return false;
     }
-    
+    private boolean checkCorrectPassword(String name,String password) {
+        User temp = userRepository.findByName(name);
+        if (password == temp.getPassword()) {
+            return true;
+        }
+        return false;
+    }
+        
+
     public User getUserByName(String name) {    
         return userRepository.findByName(name);
     }
@@ -41,6 +49,17 @@ public class UserService {
 
     public void ResetRepository() {
         userRepository.deleteAll();
+    }
+
+    public boolean checkUserLogin(User user) {
+        if (existingUserByName(user.getName()) == false ) {
+            return false;
+        }
+        if (checkCorrectPassword(user.getName(), user.getPassword())) {
+            return false;
+        }
+
+        return true;
     }
 
 }

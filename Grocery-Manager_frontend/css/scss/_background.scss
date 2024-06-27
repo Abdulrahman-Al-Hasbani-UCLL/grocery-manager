@@ -1,8 +1,19 @@
 @use "variable.scss" as *;
 
-html, body {
+html,
+body {
     height: 100%;
-    overflow: hidden;
+}
+
+header, footer {
+    section {
+        img {
+            margin-top: 0.5rem;
+            width: $image-base-size; // Use viewport width units for dynamic scaling
+            height: auto; // Maintain aspect ratio
+            border-radius: 50%; // Makes the image round, adjust as needed
+        }
+    }
 }
 
 body {
@@ -14,57 +25,88 @@ body {
     font-family: 'Poppins', sans-serif;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    margin-bottom: 0.1rem; 
-    background: rgb(5,171,233);
-    background: linear-gradient(180deg, #05abe9 0%, #05abe9 30%,#035080 50%, #011e30 70%);
+    margin-bottom: 0.1rem;
+    background: linear-gradient(180deg, #2a2a2a 0%, #3b3b3b 33%, #4c4c4c 66%);
     background-repeat: no-repeat;
     background-size: 100%;
     background-size: cover;
+
     main {
         flex-grow: 1;
     }
-    a {
-        font-style: normal;
-        color: inherit;
-        text-decoration: none;
-        transition: font-style 1.5s ease, transform 1.5s ease, font-size 1.5s ease;
-        &:hover {
-            
-            font-style:italic;
-            transform: scale(1.5);
-            font-size: 1.2em;
-        }
-    }
-    
 
     header {
         display: flex;
         flex-direction: row;
         color: $antiquewhite;
+        align-items: center;
+
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img {
+                border-radius: 90px;
+            }
+        }
+
         ul {
             display: flex;
             flex-direction: row;
             flex-grow: 1;
             margin-left: 1rem;
             margin-right: 1rem;
-            
+
             background-color: #8BC6EC;
             background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
 
             border-radius: 30px;
             border-width: 3px;
-            
-            li{
+
+            a {
+                font-style: normal;
+                color: inherit;
+                text-decoration: none;
+                transition: font-style 1.5s ease, transform 1.5s ease, font-size 1.5s ease;
+
+                &:hover {
+
+                    font-style: italic;
+                    transform: scale(1.5);
+                    font-size: 1.2em;
+                }
+            }
+
+            li {
                 margin: auto;
                 color: black;
             }
-            
+        }
+
+        .profileIcon {
+            margin-right: 1rem;
+            align-self: center;
+            scale: 0.7;
         }
     }
+
+
+
     footer {
         color: $antiquewhite;
         display: flex;
         flex-direction: row;
+
+
+        section {
+            display: flex;
+            flex-direction: column;
+
+            img {
+                border-radius: 90px;
+            }
+        }
 
         ul {
             display: flex;
@@ -74,15 +116,36 @@ body {
             margin-right: 1rem;
             border-radius: 30px;
             border-width: 3px;
-            
-            li{
+
+            a {
+                font-style: normal;
+                color: inherit;
+                text-decoration: none;
+                transition: font-style 1.5s ease, transform 1.5s ease, font-size 1.5s ease;
+
+                &:hover {
+
+                    font-style: italic;
+                    transform: scale(1.5);
+                    font-size: 1.2em;
+                }
+            }
+
+            li {
                 margin: auto;
                 color: $Honeydew;
             }
-            
+
+        }
+
+        .logoutButton {
+            margin-left: 0.5rem;
+            align-self: center;
+            padding: 0.5rem;
         }
     }
 }
+
 @media (max-width: 800px) {
     body header ul {
         flex-direction: column;
@@ -93,11 +156,15 @@ body {
         }
     }
 }
+
 @media (max-height: 800px) {
-    body, html{
+
+    body,
+    html {
         height: auto;
         min-height: 100vh;
     }
+
     body {
         display: block;
     }

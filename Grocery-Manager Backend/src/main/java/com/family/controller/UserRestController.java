@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.family.model.User;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,15 +18,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/users")
 public class UserRestController {
     private UserService userService;
 
-    /*public UserRestController(UserService userService) {
+    public UserRestController(UserService userService) {
         this.userService = userService;
-    }*/
+    }
 
     @GetMapping
     public List<User> getAllUsers() {
@@ -41,5 +42,10 @@ public class UserRestController {
     public User addUser(@Valid @RequestBody User user) {
         return userService.addUser(user);
     }
-    
+
+    @PostMapping("/login")
+    public boolean getValidLogin(@RequestParam String name, @RequestParam String password) {
+        User user = new User(name, password);
+        return userService.checkUserLogin(user);
+    }
 }
