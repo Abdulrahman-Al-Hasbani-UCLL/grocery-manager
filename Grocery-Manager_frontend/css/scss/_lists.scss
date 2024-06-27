@@ -5,6 +5,10 @@ main {
         margin-left: 1.5rem;
         margin-top: 0.5rem;
         border-radius: 30px;
+        &:hover {
+            cursor: pointer;
+        }
+        padding: 0.3rem;
     }
     
     td, th {
@@ -12,5 +16,53 @@ main {
         padding-bottom: 0.75rem;
         padding-left: 1.5rem;
     }
+    .mainTable {
+        max-width: 60%; // Prevents the table from becoming too wide on large screens
+        margin: auto; // Centers the table
+        display: block;
+        overflow-x: auto; // Ensures the table is scrollable on small screens
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); // Adds a subtle shadow for depth
+        border-collapse: collapse; // Makes the table look more compact
+        border-radius: 8px; // Optional: Adds rounded corners to the table
+        align-self: center;      
+        td, th {
+            border: 1px solid $antiquewhite; // Adjusts border color using a variable
+            text-align: center; // Centers text in table cells
+            padding: 1rem;
+        }
 
+        th {
+            background-color: white; // Use a variable for background color
+            color: black; // Use a variable for text color
+        }
+        td{
+            color: white;
+            background-color: $BackgroundColor;
+        }
+        tr {
+            transition-duration: 1000ms;
+            &:hover {
+                font-weight: bold;
+                transition-duration: 1000ms;
+                
+            }
+        }
+        input {
+            border-radius: 15px;
+            border-width: 2px;
+        }
+        button {
+            border-radius: 15px;
+        }
+    }
+    .mainStatus {
+        margin-left:10%;
+        margin-top: 1rem;
+    }
+    .mainStatusText {
+        margin-left: 10%;
+        border: $antiquewhite;
+        border-radius: 30px;
+        border-width: 3px;
+    }
 }

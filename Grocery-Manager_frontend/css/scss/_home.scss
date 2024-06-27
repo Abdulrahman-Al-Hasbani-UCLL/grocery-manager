@@ -10,7 +10,9 @@ main {
     }
     div {
         align-self: center;
-        margin-left: 25%;
-        margin-right: 25%;
+        width: 100%;
+        max-width: 960px; 
+        margin: auto; 
     }
+    
 }

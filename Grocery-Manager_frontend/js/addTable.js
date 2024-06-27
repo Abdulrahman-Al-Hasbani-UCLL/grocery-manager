@@ -1,66 +1,120 @@
-// Create the table and its elements
-const table = document.createElement('table');
-const thead = document.createElement('thead');
-const tbody = document.createElement('tbody');
-const trHead = document.createElement('tr');
+const mainTable = document.createElement("table");
+mainTable.innerHTML = `
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>List Name</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Bought</th>
+    </tr>
+</thead>
+`
+mainTable.className = "mainTable";
+document.querySelector("main").appendChild(mainTable);
 
-// Define the headers with new names
-const headers = ['Name', 'Description', 'Bought'];
+const tableBody = document.createElement("tbody");
+tableBody.innerHTML = "";
+tableBody.id = "items_table_body";
+document.querySelector("table").appendChild(tableBody);
 
-// Append the headers to the table head
-headers.forEach(headerText => {
-    const th = document.createElement('th');
-    th.textContent = headerText;
-    trHead.appendChild(th);
-});
+const statusDiv = document.createElement("div");
+statusDiv.innerHTML = `<h3 class="mainStatus">Status</h3>`;
+document.querySelector("main").appendChild(statusDiv);
+statusDiv.addEventListener("mouseover", () => statusDiv.className = "focused");
+statusDiv.addEventListener("mouseout", () => statusDiv.className = "");
 
-// Append the head row to the thead
-thead.appendChild(trHead);
+let items = [];
 
-// Sample data for the table body (excluding the 'Bought' column)
-const data = [
-    ['Item 1', 'Description of Item 1'],
-    ['Item 2', 'Description of Item 2'],
-    ['Item 3', 'Description of Item 3']
-];
+const fetchItems = async () => {
+    const response = await fetch("http://localhost:8080/items");
+    const result = await response.json();
+    items = result;
+    renderItems(items);
+};
 
-// Function to be called when an item is bought
-function itemBought() {
-    console.log('Item bought!');
-}
+const boughtItem = async (itemName) => {
+    await fetch(`http://localhost:8080/items?name=${itemName}`, {
+        method: "DELETE"
+    });
+    items = items.filter(item => item.name !== itemName);
+    renderItems(items);
+    statusDiv.innerHTML = `<h3 class="mainStatus">Status</h3><p class="mainStatusText">${itemName} has been deleted</p>`;
+};
 
-// Append the data to the table body
-data.forEach(rowData => {
-    const tr = document.createElement('tr');
-    rowData.forEach(cellData => {
-        const td = document.createElement('td');
-        td.textContent = cellData;
-        tr.appendChild(td);
+const renderItems = (itemsList) => {
+    const propertiesToShow = ['name', 'listName', 'description', 'author'];
+    tableBody.innerHTML = "";
+    itemsList.forEach((item) => {
+        const row = document.createElement("tr");
+        tableBody.appendChild(row);
+
+        
+
+        propertiesToShow.forEach((prop) => {
+            const cell = document.createElement("td");
+            cell.textContent = item[prop];
+            row.appendChild(cell);
+        });
+
+        const boughtCheckbox = document.createElement("input");
+        boughtCheckbox.type = "checkbox";
+        boughtCheckbox.id = `${item.id}`
+        boughtCheckbox.addEventListener("change", () => {
+            if (boughtCheckbox.checked) {
+                boughtItem(item.name);
+            }
+        });
+
+        const boughtCell = document.createElement("td");
+        boughtCell.appendChild(boughtCheckbox);
+        row.appendChild(boughtCell);
     });
 
-    // Create a checkbox for the 'Bought' column
-    const tdCheckbox = document.createElement('td');
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.addEventListener('change', function() {
-        if (this.checked) {
-            itemBought();
-        }
+    const inputRow = document.createElement("tr");
+    inputRow.className = "inputRow";
+    propertiesToShow.forEach((prop) => {
+        const cell = document.createElement("td");
+        const input = document.createElement("input");
+        input.type = "text";
+        input.id = `input_${prop}`;
+        // Set placeholder text
+        input.placeholder = `Example: Item ${prop}`;
+        cell.appendChild(input);
+        inputRow.appendChild(cell);
     });
-    tdCheckbox.appendChild(checkbox);
-    tr.appendChild(tdCheckbox);
 
-    tbody.appendChild(tr);
-});
+    const submitCell = document.createElement("td");
+    const submitButton = document.createElement("button");
+    submitButton.textContent = "Add";
+    submitButton.addEventListener("click", addItem);
+    submitCell.appendChild(submitButton);
+    inputRow.appendChild(submitCell);
 
-// Append the thead and tbody to the table
-table.appendChild(thead);
-table.appendChild(tbody);
+    tableBody.appendChild(inputRow);
+};
 
-// Find the first div within the main element and append the table to it
-const mainDiv = document.querySelector('main div');
-mainDiv.appendChild(table);
+const addItem = async () => {
+    const item = {
+        name: document.getElementById("input_name").value,
+        listName: document.getElementById("input_listName").value,
+        description: document.getElementById("input_description").value,
+        author: document.getElementById("input_author").value,
+    };
 
-setInterval(function() {
-    location.reload();
-}, 10000);
+    await fetch("http://localhost:8080/items", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(item),
+    });
+
+    statusDiv.innerHTML = `<h3 class="mainStatus">Status</h3><p class="mainStatusText">${item.name} has been added</p>`;
+
+    fetchItems();
+};
+
+fetchItems();
+
+setInterval(fetchItems, 35000);

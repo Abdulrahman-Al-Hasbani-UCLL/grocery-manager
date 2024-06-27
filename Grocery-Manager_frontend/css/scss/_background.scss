@@ -1,17 +1,28 @@
 @use "variable.scss" as *;
 
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+
     font-family: 'Poppins', sans-serif;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    margin-top: 0.1rem;
     margin-bottom: 0.1rem; 
     background: rgb(5,171,233);
     background: linear-gradient(180deg, #05abe9 0%, #05abe9 30%,#035080 50%, #011e30 70%);
     background-repeat: no-repeat;
     background-size: 100%;
     background-size: cover;
-    
+    main {
+        flex-grow: 1;
+    }
     a {
         font-style: normal;
         color: inherit;
@@ -71,4 +82,24 @@ body {
             
         }
     }
+}
+@media (max-width: 800px) {
+    body header ul {
+        flex-direction: column;
+        align-items: center;
+
+        li {
+            margin-left: 0.1rem;
+        }
+    }
+}
+@media (max-height: 800px) {
+    body, html{
+        height: auto;
+        min-height: 100vh;
+    }
+    body {
+        display: block;
+    }
+
 }
