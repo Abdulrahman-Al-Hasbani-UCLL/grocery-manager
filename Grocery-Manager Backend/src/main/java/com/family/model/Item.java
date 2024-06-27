@@ -2,6 +2,8 @@ package com.family.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -32,7 +34,20 @@ public class Item {
     @NotBlank(message = "Author can't be blank.")
     private String author;
 
+    @Column(name = "importance", columnDefinition = "SMALLINT")
+    @Min(value = 1, message = "Priority can't be lower than 1.")
+    @Max(value= 3, message = "Priority can't be higher than 3.")
+    private int importance;
+
     protected Item() {
+    }
+
+    public Item(String name, String listName, String description, String author, int importance) {
+        this.name = name;
+        this.listName = listName;
+        this.description = description;
+        this.author = author;
+        this.importance = importance;
     }
 
     public Item(String name, String listName, String description, String author) {
@@ -40,6 +55,7 @@ public class Item {
         this.listName = listName;
         this.description = description;
         this.author = author;
+        this.importance = 2;
     }
 
     public Long getId() {
@@ -80,5 +96,13 @@ public class Item {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public int getImportance() {
+        return importance;
+    }
+
+    public void setImportance(int priority) {
+        this.importance = priority;
     }
 }

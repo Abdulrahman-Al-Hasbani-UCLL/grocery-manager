@@ -4,12 +4,8 @@
 BBBDF6 Periwinkle
 EDFFEC Honeydew
 */
-html,
-body {
-  height: 100%;
-}
-
-header section img, footer section img {
+header section img,
+footer section img {
   margin-top: 0.5rem;
   width: 5vw;
   height: auto;
@@ -164,22 +160,22 @@ main input {
 main input:hover {
   cursor: pointer;
 }
-main td, main th {
+main td,
+main th {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   padding-left: 1.5rem;
 }
 main .mainTable {
-  max-width: 60%;
+  max-width: 80%;
   margin: auto;
   display: block;
   overflow-x: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-collapse: collapse;
   border-radius: 8px;
-  align-self: center;
 }
-main .mainTable td, main .mainTable th {
+main .mainTable td,
+main .mainTable th {
   border: 1px solid #faebd7;
   text-align: center;
   padding: 1rem;
@@ -189,11 +185,11 @@ main .mainTable th {
   color: black;
 }
 main .mainTable td {
-  color: white;
-  background-color: #05abe9;
+  color: black;
 }
 main .mainTable tr {
   transition-duration: 1000ms;
+  background-color: #05abe9;
 }
 main .mainTable tr:hover {
   font-weight: bold;
@@ -206,15 +202,65 @@ main .mainTable input {
 main .mainTable button {
   border-radius: 15px;
 }
-main .mainStatus {
-  margin-left: 10%;
-  margin-top: 1rem;
+main .mainTable .low {
+  background-color: #d1e7dd;
 }
-main .mainStatusText {
-  margin-left: 10%;
-  border: #faebd7;
-  border-radius: 30px;
-  border-width: 3px;
+main .mainTable .mid {
+  background-color: #fff3cd;
+}
+main .mainTable .high {
+  background-color: #f8d7da;
+}
+main .specificList {
+  flex-grow: 1;
+  align-self: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(30vw, 50vw));
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+}
+@media (max-width: 900px) {
+  main .specificList {
+    grid-template-columns: repeat(1, minmax(15vw, 80vw));
+  }
+}
+main .specificList h3 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  grid-column: span 1;
+}
+main .specificList .mainTable {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+}
+main .addItemTable {
+  justify-content: center;
+  align-self: center;
+  text-align: center;
+  overflow-x: auto;
+  border-collapse: collapse;
+  border-radius: 8px;
+}
+main .addItemTable th {
+  background-color: white;
+  color: black;
+  padding: 1rem;
+}
+main .addItemTable tr {
+  background-color: #faebd7;
+}
+main .addItemTable input {
+  margin: 0;
+  margin: auto;
+  padding: 1rem;
+}
+main .addItemTable button {
+  padding: 0.5rem;
+  border-radius: 15px;
 }
 
 #loginMain {

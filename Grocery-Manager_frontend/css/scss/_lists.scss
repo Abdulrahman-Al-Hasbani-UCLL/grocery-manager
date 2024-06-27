@@ -5,64 +5,132 @@ main {
         margin-left: 1.5rem;
         margin-top: 0.5rem;
         border-radius: 30px;
+
         &:hover {
             cursor: pointer;
         }
+
         padding: 0.3rem;
     }
-    
-    td, th {
+
+    td,
+    th {
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
         padding-left: 1.5rem;
     }
+
     .mainTable {
-        max-width: 60%; // Prevents the table from becoming too wide on large screens
-        margin: auto; // Centers the table
+        max-width: 80%;
+        margin: auto;
         display: block;
-        overflow-x: auto; // Ensures the table is scrollable on small screens
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1); // Adds a subtle shadow for depth
-        border-collapse: collapse; // Makes the table look more compact
-        border-radius: 8px; // Optional: Adds rounded corners to the table
-        align-self: center;      
-        td, th {
-            border: 1px solid $antiquewhite; // Adjusts border color using a variable
-            text-align: center; // Centers text in table cells
+        overflow-x: auto;
+        border-collapse: collapse;
+        border-radius: 8px;
+
+        td,
+        th {
+            border: 1px solid $antiquewhite;
+            text-align: center;
             padding: 1rem;
         }
 
         th {
-            background-color: white; // Use a variable for background color
-            color: black; // Use a variable for text color
+            background-color: white;
+            color: black;
         }
-        td{
-            color: white;
-            background-color: $BackgroundColor;
+
+        td {
+            color: black;
         }
+
         tr {
             transition-duration: 1000ms;
+            background-color: $BackgroundColor;
+
             &:hover {
                 font-weight: bold;
                 transition-duration: 1000ms;
-                
+
             }
         }
+
         input {
             border-radius: 15px;
-            border-width: 2px;  
+            border-width: 2px;
         }
+
         button {
             border-radius: 15px;
         }
+
+        .low {
+            background-color: #d1e7dd;
+        }
+
+        .mid {
+            background-color: #fff3cd;
+        }
+
+        .high {
+            background-color: #f8d7da;
+        }
     }
-    .mainStatus {
-        margin-left:10%;
-        margin-top: 1rem;
+
+    .specificList {
+        flex-grow: 1;
+        align-self: center;
+        height: fit-content;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(30vw, 50vw));
+        gap: 1rem;
+        justify-content: center;
+        padding: 1rem;
+
+        @media (max-width: 900px) {
+            grid-template-columns: repeat(1, minmax(15vw, 80vw));
+        }
     }
-    .mainStatusText {
-        margin-left: 10%;
-        border: $antiquewhite;
-        border-radius: 30px;
-        border-width: 3px;
+
+    .specificList h3 {
+        text-align: center;
+        margin-bottom: 0.5rem;
+        grid-column: span 1;
+    }
+
+    .specificList .mainTable {
+        width: 100%;
+        max-width: none;
+        margin: 0 auto;
+    }
+
+    .addItemTable {
+        justify-content: center;
+        align-self: center;
+        text-align: center;
+        overflow-x: auto;
+        border-collapse: collapse;
+        border-radius: 8px;
+
+        th {
+            background-color: white;
+            color: black;
+            padding: 1rem;
+        }
+
+        tr {
+            background-color: $antiquewhite;
+        }
+
+        input {
+            margin: 0;
+            margin: auto;
+            padding: 1rem;
+        }
+
+        button {
+            padding: 0.5rem;
+            border-radius: 15px;
+        }
     }
 }

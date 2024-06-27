@@ -12,6 +12,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         },
     }).then(response => {
         if (!response.ok) {
+            alert('Network response was not ok');
             throw new Error('Network response was not ok');
         }
         return response.json();
@@ -20,6 +21,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         if (data === true) {
             window.location.href = 'home.html';
             localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userName', `${name}`);
             console.log("Auth successful");
         } else {
             alert('Invalid login');

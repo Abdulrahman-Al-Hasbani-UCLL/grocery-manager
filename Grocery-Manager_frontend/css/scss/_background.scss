@@ -1,17 +1,13 @@
 @use "variable.scss" as *;
 
-html,
-body {
-    height: 100%;
-}
-
-header, footer {
+header,
+footer {
     section {
         img {
             margin-top: 0.5rem;
-            width: $image-base-size; // Use viewport width units for dynamic scaling
-            height: auto; // Maintain aspect ratio
-            border-radius: 50%; // Makes the image round, adjust as needed
+            width: $image-base-size;
+            height: auto;
+            border-radius: 50%;
         }
     }
 }
@@ -135,7 +131,6 @@ body {
                 margin: auto;
                 color: $Honeydew;
             }
-
         }
 
         .logoutButton {
@@ -168,5 +163,4 @@ body {
     body {
         display: block;
     }
-
 }

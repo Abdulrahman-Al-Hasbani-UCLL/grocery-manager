@@ -11,8 +11,8 @@ import jakarta.annotation.PostConstruct;
 
 @Component
 public class DbInitilizer {
-    private UserService userService;
-    private ItemService itemService; // Assuming an ItemService exists
+    private final UserService userService;
+    private final ItemService itemService;
 
     public DbInitilizer(UserService userService, ItemService itemService) {
         this.userService = userService;
@@ -21,12 +21,22 @@ public class DbInitilizer {
 
     @PostConstruct
     public void initDb() {
-        // Add a user
-        userService.addUser(new User("Test User", "password123"));
+        if (userService.count() == 0) { // Check if the database is empty
+            // Add the users
+            userService.addUser(new User("Test User", "password123"));
+            userService.addUser(new User("DemoX200", "t"));
+        }
 
-        // Add a few items
-        itemService.addItem(new Item("Milk", "Groceries", "1 gallon of milk", "Test User"));
-        itemService.addItem(new Item("Bread", "Groceries", "Whole wheat bread", "Test User"));
-        itemService.addItem(new Item("Apples", "Groceries", "A dozen of green apples", "Test User"));
+        if (itemService.count() == 0) { // Check if the database is empty
+            // Add a few items
+            itemService.addItem(new Item("Milk", "Groceries store", "1 gallon of milk", "Test User", 1));
+            itemService.addItem(new Item("Bread", "Groceries store", "Whole wheat bread", "Test User", 3));
+            itemService.addItem(new Item("Apples", "Groceries store", "A dozen of green apples", "Test User", 1));
+
+            itemService.addItem(new Item("Battery", "Appliances store", "AAA", "DemoX200",1));
+            itemService.addItem(new Item("TV", "Appliances store 2", "Big 80 inch tv please", "DemoX200",1));
+            
+            itemService.addItem(new Item("Sheep", "Farm", "1x", "Test User"));
+        }
     }
 }

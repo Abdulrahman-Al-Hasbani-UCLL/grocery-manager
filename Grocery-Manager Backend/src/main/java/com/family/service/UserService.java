@@ -1,5 +1,6 @@
 package com.family.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -60,6 +61,12 @@ public class UserService {
         }
 
         return true;
+    }
+
+    public int count() {
+        List<User> templ = new ArrayList<>();
+        templ.addAll(getAllUsers());
+        return templ.size();
     }
 
 }

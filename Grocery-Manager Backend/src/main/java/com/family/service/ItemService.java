@@ -1,5 +1,6 @@
 package com.family.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -41,5 +42,11 @@ public class ItemService {
 
     public void deleteItemByName(String name) {
         itemRepository.delete(getItemByName(name));
+    }
+
+    public int count() {
+        List<Item> templ = new ArrayList<>();
+        templ.addAll(getAllItems());
+        return templ.size();
     }
 }

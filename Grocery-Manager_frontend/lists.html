@@ -11,6 +11,7 @@
     <script src="js/addTable.js" defer></script>
     <title>Lists</title>
 </head>
+
 <body>
     <header>
         <section>
@@ -39,8 +40,37 @@
 
 
     <main>
-        <h2>Lists</h2>
+        <h2>General List</h2>
         <div class="mainList">
+
+        </div>
+        <h2>Specific list</h2>
+        <div class="specificList">
+
+        </div>
+        <hr size="2" width="80%">
+        <h2>Add Item</h2>
+        <div class="addItemFullInfo">
+            <table class="addItemTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>List name</th>
+                        <th>Importance</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" id="input_name_general_X" placeholder="Item Name" autocomplete="off" spellcheck="false"></td>
+                        <td><input type="text" id="input_description_general_X" placeholder="Item Description" autocomplete="off" spellcheck="false"></td>
+                        <td><input type="text" id="inputListName_general_X" placeholder="List or store name" autocomplete="off" spellcheck="false"></td>
+                        <td><input type="number" id="input_importance_general_X" value=2 autocomplete="off" max="3" min="1"></td>
+                        <td><button onclick="addItemSpecificList()">Add</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </main>
 
@@ -65,6 +95,7 @@
                 </a></li>
         </ul>
     </footer>
-    
+
 </body>
+
 </html>
