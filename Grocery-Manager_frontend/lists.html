@@ -63,10 +63,16 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text" id="input_name_general_X" placeholder="Item Name" autocomplete="off" spellcheck="false"></td>
-                        <td><input type="text" id="input_description_general_X" placeholder="Item Description" autocomplete="off" spellcheck="false"></td>
-                        <td><input type="text" id="inputListName_general_X" placeholder="List or store name" autocomplete="off" spellcheck="false"></td>
-                        <td><input type="number" id="input_importance_general_X" value=2 autocomplete="off" max="3" min="1"></td>
+                        <td><input type="text" id="input_name_general_X" placeholder="Item Name" autocomplete="off"
+                                spellcheck="false"></td>
+                        <td><input type="text" id="input_description_general_X" placeholder="Item Description"
+                                autocomplete="off" spellcheck="false"></td>
+                        <td><input type="text" id="inputListName_general_X" placeholder="List or store name"
+                                autocomplete="off" spellcheck="false" oninput="showSuggestions()">
+                            <div id="listNameSuggestions" class="suggestions"></div>
+                        </td>
+                        <td><input type="number" id="input_importance_general_X" value=2 autocomplete="off" max="3"
+                                min="1"></td>
                         <td><button onclick="addItemSpecificList()">Add</button></td>
                     </tr>
                 </tbody>

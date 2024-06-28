@@ -21,16 +21,16 @@ main {
     }
 
     .mainTable {
-        max-width: 80%;
+        max-width: 95%;
         margin: auto;
         display: block;
         overflow-x: auto;
         border-collapse: collapse;
-        border-radius: 8px;
+        border-radius: 30px;
 
         td,
         th {
-            border: 1px solid $antiquewhite;
+            border: solid $antiquewhite;
             text-align: center;
             padding: 1rem;
         }
@@ -56,12 +56,12 @@ main {
         }
 
         input {
-            border-radius: 15px;
+            border-radius: 30px;
             border-width: 2px;
         }
 
         button {
-            border-radius: 15px;
+            border-radius: 30px;
         }
 
         .low {
@@ -73,7 +73,14 @@ main {
         }
 
         .high {
-            background-color: #f8d7da;
+            background-color: #ffacb3;
+        }
+
+        .lockedInputField {
+            background-color: #f2f2f2;
+            border: 1px solid #cccccc;
+            color: #999999;
+            cursor: not-allowed;
         }
     }
 
@@ -83,7 +90,7 @@ main {
         height: fit-content;
         display: grid;
         grid-template-columns: repeat(2, minmax(30vw, 50vw));
-        gap: 1rem;
+        gap: 1.2rem;
         justify-content: center;
         padding: 1rem;
 
@@ -110,7 +117,7 @@ main {
         text-align: center;
         overflow-x: auto;
         border-collapse: collapse;
-        border-radius: 8px;
+        border-radius: 30px;
 
         th {
             background-color: white;
@@ -130,7 +137,56 @@ main {
 
         button {
             padding: 0.5rem;
-            border-radius: 15px;
+            border-radius: 30px;
         }
+    }
+
+    .suggestions {
+        max-width: fit-content;
+        position: absolute;
+        
+        border: 1px solid #ccc;
+        max-height: 150px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: $EnglishViolet;
+        z-index: 1000;
+
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .suggestion {
+        
+        margin: 0.8rem;
+        cursor: pointer;
+        align-self: center;
+        &:hover {
+            color: black;
+            font-weight: bold;
+           text-decoration: underline;
+        }
+    }
+
+    .deleteListButton {
+        margin-left: 10px;
+        padding: 5px 10px;
+        background-color: #bc6868;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    
+    .tableHeaderContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .shouldBeHidden {
+        display: none;
     }
 }

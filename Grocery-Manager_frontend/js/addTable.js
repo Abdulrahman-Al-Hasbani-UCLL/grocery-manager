@@ -1,17 +1,68 @@
 let items = [];
+let listNames = new Set();
 
 const fetchItems = async () => {
-    const response = await fetch("http://localhost:8080/items");
-    const result = await response.json();
-    items = result;
-    renderItems(items);
+    try {
+        const response = await fetch("http://localhost:8080/items");
+        const result = await response.json();
+        items = result;
+        extractListNames(items);
+        renderItems(items);
+    } catch (error) {
+        console.error('Failed to fetch items:', error);
+    }
 };
+
+const extractListNames = (items) => {
+    listNames = new Set(items.map(item => item.listName));
+};
+
+const showSuggestions = () => {
+    const input = document.getElementById("inputListName_general_X");
+    const suggestionsContainer = document.getElementById("listNameSuggestions");
+    const query = input.value.toLowerCase();
+
+    suggestionsContainer.innerHTML = "";
+
+    if (query) {
+        const filteredListNames = Array.from(listNames).filter(name => name.toLowerCase().includes(query));
+
+        filteredListNames.forEach(name => {
+            const suggestion = document.createElement("div");
+            suggestion.className = "suggestion";
+            suggestion.textContent = name;
+            suggestion.addEventListener("click", () => {
+                input.value = name;
+                suggestionsContainer.innerHTML = "";
+            });
+            suggestionsContainer.appendChild(suggestion);
+        });
+    }
+};
+
 
 const boughtItem = async (itemName) => {
     await fetch(`http://localhost:8080/items?name=${itemName}`, {
         method: "DELETE"
     });
     items = items.filter(item => item.name !== itemName);
+    renderItems(items);
+
+    listNames = new Set(items.map(item => item.listName));
+};
+
+const deleteList = async (listName) => {
+    const itemsToDelete = items.filter(item => item.listName === listName);
+
+    for (const item of itemsToDelete) {
+        await fetch(`http://localhost:8080/items?name=${item.name}`, {
+            method: "DELETE"
+        });
+    }
+    listNames.delete(listName);
+
+    items = items.filter(item => item.listName !== listName);
+
     renderItems(items);
 };
 
@@ -21,9 +72,23 @@ const renderItems = (itemsList) => {
 
     const createTable = (items, listName, container) => {
         const tableContainer = document.createElement("div");
+
+        const tableHeaderContainer = document.createElement("div");
+        tableHeaderContainer.className = "tableHeaderContainer";
+
         const tableTitle = document.createElement("h3");
         tableTitle.textContent = listName;
-        tableContainer.appendChild(tableTitle);
+        tableHeaderContainer.appendChild(tableTitle);
+
+        if (listName !== "All Items") {
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete List";
+            deleteButton.className = "deleteListButton";
+            deleteButton.addEventListener("click", () => deleteList(listName));
+            tableHeaderContainer.appendChild(deleteButton);
+        }
+
+        tableContainer.appendChild(tableHeaderContainer);
 
         const table = document.createElement("table");
         table.className = "mainTable";
@@ -34,7 +99,6 @@ const renderItems = (itemsList) => {
                     <th>Name</th>
                     <th>Description</th>
                     <th>Author</th>
-                    <th>Urgency</th>
                     <th>Bought</th>
                 </tr>
             </thead>`;
@@ -61,7 +125,7 @@ const renderItems = (itemsList) => {
             }
             row.className = rowClass;
 
-            ['name', 'description', 'author', 'importance'].forEach((prop) => {
+            ['name', 'description', 'author'].forEach((prop) => {
                 const cell = document.createElement("td");
                 cell.textContent = item[prop];
                 row.appendChild(cell);
@@ -82,18 +146,20 @@ const renderItems = (itemsList) => {
 
             tableBody.appendChild(row);
         });
-        
+
         const inputRow = document.createElement("tr");
         inputRow.className = "inputRow";
 
-        ['name', 'description', 'author', 'importance'].forEach((prop) => {
+        ['name', 'description', 'author'].forEach((prop) => {
             const cell = document.createElement("td");
             const input = document.createElement("input");
-            input.type = prop === 'importance' ? "number" : "text";
+            input.type = "text";
             input.id = `input_${prop}_${listName}`;
             input.placeholder = `Item ${prop}`;
             if (prop === 'author') {
                 input.value = localStorage.getItem("userName");
+                input.readOnly = true;
+                input.className = "lockedInputField";
             }
             input.autocomplete = false;
             input.spellcheck = false;
@@ -115,6 +181,7 @@ const renderItems = (itemsList) => {
         container.appendChild(tableContainer);
     };
 
+
     createTable(itemsList, "All Items", document.querySelector(".mainList"));
 
     const groupedItems = itemsList.reduce((groups, item) => {
@@ -132,8 +199,8 @@ const addItem = async (listName) => {
         name: document.getElementById(`input_name_${listName}`).value,
         description: document.getElementById(`input_description_${listName}`).value,
         author: document.getElementById(`input_author_${listName}`).value,
-        importance: parseInt(document.getElementById(`input_importance_${listName}`).value, 10),
-        listName: listName
+        importance: 2,
+        listName: listName === "All Items" ? "Extra Items" : listName
     };
 
     await fetch("http://localhost:8080/items", {
@@ -151,7 +218,7 @@ const addItemSpecificList = async () => {
     const item = {
         name: document.getElementById(`input_name_general_X`).value,
         description: document.getElementById(`input_description_general_X`).value,
-        author: localStorage.getItem("userName"), 
+        author: localStorage.getItem("userName"),
         importance: parseInt(document.getElementById(`input_importance_general_X`).value, 10),
         listName: document.getElementById(`inputListName_general_X`).value,
     };

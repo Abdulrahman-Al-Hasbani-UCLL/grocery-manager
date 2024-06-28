@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/notificationIcon.png" type="image/x-icon">
     <script src="js/authCheck.js"></script>
+    <script src="js/notification.js" defer></script>
     <title>Notification</title>
 </head>
 
@@ -38,8 +39,11 @@
     </header>
 
 
-    <main id="notificationButton">
-        <button>SEND NOTIFICATION</button>
+    <main class="notificationMain">
+        <form class="notificationForm">
+            <input type="text" name="storeName" id="storeName" placeholder="Example: Grocery store" maxlength="35" required>
+            <input type="button" name="sendNotficationButton" id="sendNotficationButton" value="Send Notification">
+        </form>
     </main>
 
 
