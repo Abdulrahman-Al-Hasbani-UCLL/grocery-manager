@@ -1,33 +1,8 @@
-document.getElementById('sendNotficationButton').addEventListener('click', function() {
-    const storeName = document.getElementById('storeName').value;
-    if (!storeName) {
-        alert('Please enter a store name.');
-        return;
-    }
-    //fill
-    const url = 'http://localhost:8080/api/sendNotification';
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            storeName: storeName
-        }),
+document.getElementById('sendNotficationButton').addEventListener('click', () => {
+    fetch('/api/notify?title=New%20Notification&body=You%20have%20a%20new%20notification!', {
+        method: 'POST'
     })
-    .then(response => {
-        if (!response.ok) {
-            alert('Failed to send notification');
-            throw new Error('Failed to send notification');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Notification sent successfully:', data);
-        alert('Notification sent successfully');
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+    .then(response => response.json())
+    .then(data => console.log('Notification sent successfully:', data))
+    .catch((error) => console.error('Error sending notification:', error));
 });
