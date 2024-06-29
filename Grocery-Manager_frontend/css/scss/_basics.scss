@@ -23,13 +23,10 @@
         align-items: center;
         
         input {
-            padding: 1rem;
-            margin: 1rem;
-
-            
+            padding: $margin-standard;
+            margin: $margin-standard;
         }
         #sendNotficationButton{
-            
             &:hover {
                 font-weight: bold;
             }

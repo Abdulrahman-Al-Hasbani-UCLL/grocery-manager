@@ -4,7 +4,7 @@ main {
     input {
         margin-left: 1.5rem;
         margin-top: 0.5rem;
-        border-radius: 30px;
+        border-radius: $border-radius-medium;
 
         &:hover {
             cursor: pointer;
@@ -26,13 +26,13 @@ main {
         display: block;
         overflow-x: auto;
         border-collapse: collapse;
-        border-radius: 30px;
+        border-radius: $border-radius-medium;
 
         td,
         th {
             border: solid $antiquewhite;
             text-align: center;
-            padding: 1rem;
+            padding: $margin-standard;
         }
 
         th {
@@ -51,17 +51,16 @@ main {
             &:hover {
                 font-weight: bold;
                 transition-duration: 1000ms;
-
             }
         }
 
         input {
-            border-radius: 30px;
+            border-radius: $border-radius-medium;
             border-width: 2px;
         }
 
         button {
-            border-radius: 30px;
+            border-radius: $border-radius-medium;
         }
 
         .low {
@@ -84,6 +83,20 @@ main {
         }
     }
 
+    .memberGrid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(10vw, 50vw));
+        border-color: $antiquewhite;
+        border-style: solid;
+        padding: 0.5rem;
+        gap: 2rem;
+        h3{
+            border-color: $Honeydew;
+            border-style: dotted;
+            padding: 0.3rem;
+        }
+    }
+
     .specificList {
         flex-grow: 1;
         align-self: center;
@@ -92,7 +105,7 @@ main {
         grid-template-columns: repeat(2, minmax(30vw, 50vw));
         gap: 1.2rem;
         justify-content: center;
-        padding: 1rem;
+        padding: $margin-standard;
 
         @media (max-width: 900px) {
             grid-template-columns: repeat(1, minmax(15vw, 80vw));
@@ -117,12 +130,12 @@ main {
         text-align: center;
         overflow-x: auto;
         border-collapse: collapse;
-        border-radius: 30px;
+        border-radius: $border-radius-medium;
 
         th {
             background-color: white;
             color: black;
-            padding: 1rem;
+            padding: $margin-standard;
         }
 
         tr {
@@ -132,12 +145,12 @@ main {
         input {
             margin: 0;
             margin: auto;
-            padding: 1rem;
+            padding: $margin-standard;
         }
 
         button {
             padding: 0.5rem;
-            border-radius: 30px;
+            border-radius: $border-radius-medium;
         }
     }
 

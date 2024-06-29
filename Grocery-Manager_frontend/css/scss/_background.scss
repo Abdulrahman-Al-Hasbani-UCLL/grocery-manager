@@ -2,13 +2,11 @@
 
 header,
 footer {
-    section {
-        img {
-            margin-top: 0.5rem;
-            width: $image-base-size;
-            height: auto;
-            border-radius: 50%;
-        }
+    img {
+        margin-top: $margin-small;
+        width: $image-base-size;
+        height: auto;
+        border-radius: $border-radius-full;
     }
 }
 
@@ -19,10 +17,10 @@ body {
     min-height: 100vh;
 
     font-family: 'Poppins', sans-serif;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.1rem;
-    background: linear-gradient(180deg, #2a2a2a 0%, #3b3b3b 33%, #4c4c4c 66%);
+    margin-left: $margin-small;
+    margin-right: $margin-small;
+    margin-bottom: $margin-tiny;
+    background: linear-gradient(180deg, $color-dark-gray 0%, $color-medium-gray 33%, $color-light-gray 66%);
     background-repeat: no-repeat;
     background-size: 100%;
     background-size: cover;
@@ -56,35 +54,33 @@ body {
             flex-direction: column;
             align-items: center;
 
-            img {
-                border-radius: 90px;
-            }
+            
+        }
+        img {
+            border-radius: $border-radius-large;
         }
 
         ul {
             display: flex;
             flex-direction: row;
             flex-grow: 1;
-            margin-left: 1rem;
-            margin-right: 1rem;
+            margin-left: $margin-standard;
+            margin-right: $margin-standard;
 
-            background-color: #8BC6EC;
-            background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+            background-image: linear-gradient(135deg, #cae3f5 0%, #828398 100%);
 
-            border-radius: 30px;
+            border-radius: $border-radius-medium;
             border-width: 3px;
 
             a {
                 font-style: normal;
                 color: inherit;
                 text-decoration: none;
-                transition: font-style 1.5s ease, transform 1.5s ease, font-size 1.5s ease;
+                transition: font-style $transition-standard, transform $transition-standard, font-size $transition-standard;
 
                 &:hover {
 
                     font-style: italic;
-                    transform: scale(1.5);
-                    font-size: 1.2em;
                 }
             }
 
@@ -95,7 +91,7 @@ body {
         }
 
         .profileIcon {
-            margin-right: 1rem;
+            margin-right: $margin-standard;
             align-self: center;
             scale: 0.7;
         }
@@ -114,7 +110,9 @@ body {
             flex-direction: column;
 
             img {
-                border-radius: 90px;
+                align-items: center;
+                align-self: center;
+                border-radius: $border-radius-large;
             }
         }
 
@@ -122,16 +120,16 @@ body {
             display: flex;
             flex-direction: column;
             flex-grow: 1;
-            margin-left: 1rem;
-            margin-right: 1rem;
-            border-radius: 30px;
+            margin-left: $margin-standard;
+            margin-right: $margin-standard;
+            border-radius: $border-radius-medium;
             border-width: 3px;
 
             a {
                 font-style: normal;
                 color: inherit;
                 text-decoration: none;
-                transition: font-style 1.5s ease, transform 1.5s ease, font-size 1.5s ease;
+                transition: font-style $transition-long, transform $transition-long, font-size $transition-long;
 
                 &:hover {
 
@@ -147,10 +145,14 @@ body {
             }
         }
 
-        .logoutButton {
-            margin-left: 0.5rem;
+        #logoutButton {
+            justify-content: center;
+            margin-left: $margin-small;
+            align-items: center;
+            align-content: center;
             align-self: center;
-            padding: 0.5rem;
+            padding: $margin-small;
+            border-radius: $border-radius-medium;
         }
     }
 }
@@ -161,7 +163,7 @@ body {
         align-items: center;
 
         li {
-            margin-left: 0.1rem;
+            margin-left: $margin-tiny;
         }
     }
 }

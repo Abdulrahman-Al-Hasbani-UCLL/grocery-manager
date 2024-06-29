@@ -20,7 +20,7 @@
             align-items: center; 
     
             img {
-                border-radius: 90px;
+                border-radius: $border-radius-large;
                 margin: auto;
             }
         }
@@ -47,13 +47,13 @@
         input {
             align-self: center;
             margin: 2rem;
-            padding: 1rem;
+            padding: $margin-standard;
         }
         button {
             align-self: center;
             max-width: 5rem;
-            padding: 1rem;
-            border-radius: 90px;
+            padding: $margin-standard;
+            border-radius: $border-radius-large;
         }
     }
 

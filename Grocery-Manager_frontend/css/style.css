@@ -4,8 +4,8 @@
 BBBDF6 Periwinkle
 EDFFEC Honeydew
 */
-header section img,
-footer section img {
+header img,
+footer img {
   margin-top: 0.5rem;
   width: 5vw;
   height: auto;
@@ -53,7 +53,7 @@ body header section {
   flex-direction: column;
   align-items: center;
 }
-body header section img {
+body header img {
   border-radius: 90px;
 }
 body header ul {
@@ -62,8 +62,7 @@ body header ul {
   flex-grow: 1;
   margin-left: 1rem;
   margin-right: 1rem;
-  background-color: #8BC6EC;
-  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+  background-image: linear-gradient(135deg, #cae3f5 0%, #828398 100%);
   border-radius: 30px;
   border-width: 3px;
 }
@@ -71,12 +70,10 @@ body header ul a {
   font-style: normal;
   color: inherit;
   text-decoration: none;
-  transition: font-style 1.5s ease, transform 1.5s ease, font-size 1.5s ease;
+  transition: font-style 1s ease, transform 1s ease, font-size 1s ease;
 }
 body header ul a:hover {
   font-style: italic;
-  transform: scale(1.5);
-  font-size: 1.2em;
 }
 body header ul li {
   margin: auto;
@@ -97,6 +94,8 @@ body footer section {
   flex-direction: column;
 }
 body footer section img {
+  align-items: center;
+  align-self: center;
   border-radius: 90px;
 }
 body footer ul {
@@ -123,10 +122,14 @@ body footer ul li {
   margin: auto;
   color: #EDFFEC;
 }
-body footer .logoutButton {
+body footer #logoutButton {
+  justify-content: center;
   margin-left: 0.5rem;
+  align-items: center;
+  align-content: center;
   align-self: center;
   padding: 0.5rem;
+  border-radius: 30px;
 }
 
 @media (max-width: 800px) {
@@ -242,6 +245,19 @@ main .mainTable .lockedInputField {
   border: 1px solid #cccccc;
   color: #999999;
   cursor: not-allowed;
+}
+main .memberGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(10vw, 50vw));
+  border-color: #faebd7;
+  border-style: solid;
+  padding: 0.5rem;
+  gap: 2rem;
+}
+main .memberGrid h3 {
+  border-color: #EDFFEC;
+  border-style: dotted;
+  padding: 0.3rem;
 }
 main .specificList {
   flex-grow: 1;
