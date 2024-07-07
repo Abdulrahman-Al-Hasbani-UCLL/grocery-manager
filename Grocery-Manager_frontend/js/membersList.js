@@ -17,9 +17,10 @@ const renderUsers = (usersList) => {
 
     usersList.forEach((user) => {
         const userElement = document.createElement("h3");
-        userElement.textContent = `${user.name}`; // Assuming each user object has a 'name' property
+        userElement.textContent = `${user.name}`;
         usersContainer.appendChild(userElement);
     });
 };
 
 fetchUsers();
+setInterval(fetchItems, 10000);

@@ -84,12 +84,14 @@ main {
     }
 
     .memberGrid {
+        width: 80vw;
         display: grid;
         grid-template-columns: repeat(3, minmax(10vw, 50vw));
         border-color: $antiquewhite;
         border-style: solid;
         padding: 0.5rem;
         gap: 2rem;
+        overflow-x: auto;
         h3{
             border-color: $Honeydew;
             border-style: dotted;

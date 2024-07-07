@@ -24,6 +24,70 @@ body {
     background-repeat: no-repeat;
     background-size: 100%;
     background-size: cover;
+    overflow-x: hidden;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $padding-small;
+        background-color: #13133b;
+        border-radius: $border-radius-medium;
+        color: $antiquewhite;
+
+        .header-left {
+            h1 {
+                font-size: 1.5em;
+                margin: 0;
+                color: $antiquewhite;
+            }
+        }
+
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+
+            ul {
+                display: flex;
+                gap: 4rem;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    margin: 0;
+                    
+                    a {
+                        font-size: 1em;
+                        color: lightgray;
+                        text-decoration: none;
+                        padding: $padding-small $padding-medium;
+                        border-radius: $border-radius-small;
+                        transition: background-color $transition-standard, transform $transition-standard;
+
+                        &:hover {
+                            background-color: lightblue;
+                            transform: translateY(-2px);color: $color-black;
+                        }
+                    }
+                }
+            }
+        }
+
+        .header-right {
+            .profileIcon {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                transition: transform $transition-standard;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
 
     main {
         flex-grow: 1;
@@ -41,63 +105,6 @@ body {
             margin: auto; 
         }
     }
-    
-
-    header {
-        display: flex;
-        flex-direction: row;
-        color: $antiquewhite;
-        align-items: center;
-
-        section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            
-        }
-        img {
-            border-radius: $border-radius-large;
-        }
-
-        ul {
-            display: flex;
-            flex-direction: row;
-            flex-grow: 1;
-            margin-left: $margin-standard;
-            margin-right: $margin-standard;
-
-            background-image: linear-gradient(135deg, #cae3f5 0%, #828398 100%);
-
-            border-radius: $border-radius-medium;
-            border-width: 3px;
-
-            a {
-                font-style: normal;
-                color: inherit;
-                text-decoration: none;
-                transition: font-style $transition-standard, transform $transition-standard, font-size $transition-standard;
-
-                &:hover {
-
-                    font-style: italic;
-                }
-            }
-
-            li {
-                margin: auto;
-                color: black;
-            }
-        }
-
-        .profileIcon {
-            margin-right: $margin-standard;
-            align-self: center;
-            scale: 0.7;
-        }
-    }
-
-
 
     footer {
         color: $antiquewhite;
